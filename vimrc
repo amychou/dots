@@ -1,11 +1,32 @@
-syntax on
+" ========== Indentation ==========
+
+" By default, indentation without hard tabs is 2 spaces
+set softtabstop=2 " Must be same value as shiftwidth if no hard tabs
+set shiftwidth=2 " Affects automatic indentation and  >>, << or == behavior
+set expandtab " Insert spaces when tab key is pressed
+
+" Indentation purely with hard tab (turn off softtabstop and expandtab to use)
+set tabstop=2 " Must be same value as shiftwidth if hard tabs
+
+" Copies the indentation from the previous line when starting new line
+" Unlike smartindent and cindent, autoindent does not interfere with file
+" based indentation
+set autoindent
+
+" ===== Filetype-based indentation =====
+" To enable, :filetype detect and then :source ~/.vimrc
+"
+" Use indentation scripts located in the indent folder of vim installation
+" Create e.g. python.vim inside of ~/.vim/after/ftplugin
 filetype indent plugin on
 
+" Hardcoded for commonly used filetypes
+" Python is 4 spaces (redundant with python.vim but overrides it)
+autocmd Filetype python setlocal shiftwidth=4 softtabstop=4 expandtab
+
+
+syntax on
 set noerrorbells
-set tabstop=2 softtabstop=2
-set shiftwidth=2
-set expandtab
-set autoindent
 set nu
 set nowrap
 set smartcase
@@ -17,9 +38,6 @@ set incsearch
 set backspace=indent,eol,start
 
 set mouse=a
-set splitbelow 
-set splitright 
-
 set belloff=all 
 
 set colorcolumn=80
@@ -35,14 +53,14 @@ Plug 'lyuts/vim-rtags'
 Plug 'kien/ctrlp.vim'
 Plug 'mbbill/undotree'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
-" set background=dark
+set background=dark
 
-colo morning 
-hi MatchParen cterm=bold ctermbg=none ctermfg=magenta
+colo morning
+hi MatchParen cterm=bold ctermbg=lightgreen ctermfg=red
 
 if executable('rg')
   let g:rg_derive_root='true'
@@ -70,3 +88,25 @@ nmap <leader>i <C-I>
 set statusline=%F
 " Always display status line
 set laststatus=2
+
+" More natural split opening
+set splitbelow 
+set splitright 
+
+" Easier split navigations (ctrl-j instead of ctrl-w and then j)
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+" Even easir split navigations (space-j instead of ctrl-w and then j)
+nnoremap <leader>j <C-W><C-J>
+nnoremap <leader>k <C-W><C-K>
+nnoremap <leader>l <C-W><C-L>
+nnoremap <leader>h <C-W><C-H>
+nnoremap <leader>p <C-W><C-W>
+
+
+" replace currently selected text with default register
+" without yanking it. "_ is the 'blackhole register' according to 
+" :help "_
+vnoremap <leader>p "_dP
