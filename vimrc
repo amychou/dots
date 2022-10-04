@@ -45,6 +45,7 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'tomlion/vim-solidity'
 Plug 'jremmen/vim-ripgrep'
 Plug 'tpope/vim-fugitive'
 Plug 'leafgarland/typescript-vim'
@@ -57,9 +58,9 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 
 call plug#end()
 
-set background=dark
+" set background=dark
 
-colo morning
+" colo morning
 hi MatchParen cterm=bold ctermbg=lightgreen ctermfg=red
 
 if executable('rg')
