@@ -54,8 +54,8 @@ Plug 'lyuts/vim-rtags'
 Plug 'kien/ctrlp.vim'
 Plug 'mbbill/undotree'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+Plug 'preservim/nerdtree'
 " Plug 'sheerun/vim-polyglot'
-
 call plug#end()
 
 " set background=dark
@@ -111,3 +111,6 @@ nnoremap <leader>p <C-W><C-W>
 " without yanking it. "_ is the 'blackhole register' according to 
 " :help "_
 vnoremap <leader>p "_dP
+
+" Open NERDTree with <leader nt
+nmap <silent><leader>t :NERDTreeToggle<CR>
