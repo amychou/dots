@@ -107,9 +107,13 @@ nnoremap <leader>h <C-W><C-H>
 nnoremap <leader>p <C-W><C-W>
 
 
-" replace currently selected text with default register
+" Delete/replace currently selected text with default register
 " without yanking it. "_ is the 'blackhole register' according to 
 " :help "_
+" Delete without yanking
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+" Paste without yanking
 vnoremap <leader>p "_dP
 
 " Open NERDTree with <leader nt
